@@ -1,25 +1,17 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-require('./js/RegisterKeyboard')
-import * as CustomKeyboard from 'react-native-yusha-customkeyboard'
+import "./js/RegisterKeyboard";
+import * as CustomKeyboard from 'react-native-yusha-customkeyboard';
 
-export default class App extends Component<{}> {
+export default class App extends Component {
   render() {
     return (
-      <CustomKeyboard.AwareCusKeyBoardScrollView style={{flex: 1}}>
+      <CustomKeyboard.AwareCusKeyBoardScrollView style={{ flex: 1 }}>
         <CustomKeyboard.CustomTextInput
-            customKeyboardType="numberKeyBoard"
-            placeholder="numberKeyBoard"
-            style={{marginTop: 20}}
+          customKeyboardType="numberKeyBoard"
+          placeholder="numberKeyBoard"
+          style={{ marginTop: 20 }}
         />
         <CustomKeyboard.CustomTextInput
           customKeyboardType="numberKeyBoardWithDot"
@@ -30,9 +22,9 @@ export default class App extends Component<{}> {
           placeholder="safeKeyBoard"
         />
         <CustomKeyboard.CustomTextInput
-              customKeyboardType="testKeyboard"
-              placeholder="testKeyboard"
-          />
+          customKeyboardType="testKeyboard"
+          placeholder="testKeyboard"
+        />
       </CustomKeyboard.AwareCusKeyBoardScrollView>
     );
   }

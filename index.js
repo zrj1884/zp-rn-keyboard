@@ -1,15 +1,15 @@
 //@flow
 
 import {
-    keyBoardAPI,
+  keyBoardAPI,
 
-    addKeyBoardHideListener,
-    addKeyBoardShowListener,
-    removeKeyBoardListener,
+  addKeyBoardHideListener,
+  addKeyBoardShowListener,
+  removeKeyBoardListener,
 
-    currentHeight,
+  currentHeight,
 
-    CustomTextInput,
+  CustomTextInput,
 } from './customKeyboard'
 
 import NumberKeyBoardView from './views/NumberKeyBoard'
@@ -17,16 +17,16 @@ import SafeKeyBoardView from './views/SafeKeyBoard'
 import AwareCusKeyBoardScrollView from './AwareCusKeyBoardScrollView'
 
 export {
-    addKeyBoardHideListener,
-    removeKeyBoardListener,
-    addKeyBoardShowListener,
+  addKeyBoardHideListener,
+  removeKeyBoardListener,
+  addKeyBoardShowListener,
 
-    currentHeight,
+  currentHeight,
 
-    CustomTextInput,
-    AwareCusKeyBoardScrollView,
+  CustomTextInput,
+  AwareCusKeyBoardScrollView,
 
-    NumberKeyBoardView,
-    SafeKeyBoardView,
-    keyBoardAPI,
+  NumberKeyBoardView,
+  SafeKeyBoardView,
+  keyBoardAPI,
 }

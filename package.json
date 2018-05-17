@@ -1,6 +1,6 @@
 {
-  "name": "react-native-yusha-customkeyboard",
-  "version": "0.0.8",
+  "name": "fego-rn-keyboard",
+  "version": "0.0.1",
   "description": "react native custom keyboard",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lyxia/react-native-yusha-customKeyboard.git"
+    "url": "https://github.com/askday/react-native-yusha-customKeyboard.git"
   },
   "keywords": [
     "react-component",
@@ -20,6 +20,25 @@
     "android",
     "customkeyboard"
   ],
-  "author": "yusha",
-  "license": "ISC"
+  "files": [
+    "android",
+    "ios",
+    "views",
+    "AwareCusKeyBoardScrollView.js",
+    "customKeyboard.js",
+    "CustomKeyBoardView.js",
+    "HFInteractionManager.js",
+    "index.js",
+    "package.json"
+  ],
+  "author": "wx",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "8.0.2",
+    "babel-preset-react-native": "4.0.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2"
+  }
 }

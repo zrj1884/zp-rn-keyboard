@@ -1,11 +1,5 @@
 import React, { Component, PureComponent } from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  View,
-  Image,
-    DeviceInfo,
-} from 'react-native';
+import { TouchableOpacity, Text, View, Image, DeviceInfo } from 'react-native';
 
 import * as StyleSheet from './MyStyleSheet'
 import DisplayView from './DisplayView'
@@ -45,7 +39,7 @@ export default class ABCKeyBoard extends PureComponent {
 
   _changeUPOrDown = () => {
     //大小写转换
-      this.changeUpOrDownRequest && cancelAnimationFrame(this.changeUpOrDownRequest)
+    this.changeUpOrDownRequest && cancelAnimationFrame(this.changeUpOrDownRequest)
     this.changeUpOrDownRequest = requestAnimationFrame(() => {
       this.setState({ ...this.state, isUP: !this.state.isUP })
     })
@@ -56,7 +50,7 @@ export default class ABCKeyBoard extends PureComponent {
     return (
       <TouchableOpacity onPress={this._changeUPOrDown}>
         <View style={[styles.key, styles.otherKey, { width: rowHeight - vSpacing * 2 }]}>
-          {type === 'UP' ? <Image source={require('./images/shouzimudaxie.png')}/> : <Image source={require('./images/xiaoxie.png')}/>}
+          {type === 'UP' ? <Image source={require('./images/shouzimudaxie.png')} /> : <Image source={require('./images/xiaoxie.png')} />}
         </View>
       </TouchableOpacity>
     )
@@ -67,7 +61,7 @@ export default class ABCKeyBoard extends PureComponent {
     return (
       <TouchableOpacity onPress={this.props.onDelete} onLongPress={this.props.onClearAll}>
         <View style={[styles.key, styles.otherKey, { width: rowHeight - vSpacing * 2 }]}>
-          <Image source={require('./images/back.png')}/>
+          <Image source={require('./images/back.png')} />
         </View>
       </TouchableOpacity>
     )
@@ -111,22 +105,22 @@ export default class ABCKeyBoard extends PureComponent {
         width={width}
         keyWidth={this.keyWidth}
         onKeyPress={this.props.onKeyPress}
-        showTip = {this.props.showTip}
+        showTip={this.props.showTip}
       />
     )
   }
 
   _renderKeyBoard = (type) => {
-    if(type === 'UP') {
-      if(this.upRows === undefined) {
+    if (type === 'UP') {
+      if (this.upRows === undefined) {
         this.upRows = this._cacultateRows(type)
       }
-      return <UPKeyBoard rows={this.upRows}/>
+      return <UPKeyBoard rows={this.upRows} />
     } else {
-      if(this.downRows === undefined) {
+      if (this.downRows === undefined) {
         this.downRows = this._cacultateRows(type)
       }
-      return <DownKeyBoard rows={this.downRows}/>
+      return <DownKeyBoard rows={this.downRows} />
     }
   }
 
@@ -220,7 +214,7 @@ const upKeys = [
 const styles = StyleSheet.create({
   keyboard: {
     backgroundColor: '#d8dbdf',
-      paddingBottom: DeviceInfo.isIPhoneX_deprecated ? 34 : 0,
+    paddingBottom: DeviceInfo.isIPhoneX_deprecated ? 34 : 0,
   },
   row: {
     height: rowHeight,
