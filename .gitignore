@@ -2,3 +2,7 @@ node_modules
 package-lock.json
 yarn.lock
 settings.json
+yarn-error.log
+RNDemo/ios/Pods
+Podfile.lock
+RNDemo/ios/RNDemo.xcworkspace
