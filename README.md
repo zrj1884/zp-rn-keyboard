@@ -1,26 +1,24 @@
-# react-native-yusha-customKeyboard
+# fego-rn-keyboard
 react native自定义键盘
 
 iOS，Android双平台使用，适配iPhoneX，博文地址：https://www.jianshu.com/p/6b6879323069
 
 ### RN版本：
 
-0.50~0.52：  0.0.7
-
-0.53及之后版：0.0.8
+0.53及之后版：0.0.4
 
 ### 安装：
 
 ```
-yarn add react-native-yusha-customkeyboard
-react-native link react-native-yusha-customkeyboard
+yarn add fego-rn-keyboard
+react-native link fego-rn-keyboard
 react-native link react-native-svg
 ```
 
 ### 使用：
-- 导入react-native-yusha-customkeyboard
+- 导入fego-rn-keyboard
 ```
-import * as CustomKeyboard from 'react-native-yusha-customkeyboard'
+import * as CustomKeyboard from 'fego-rn-keyboard'
 ```
 - 注册键盘：
 ```
@@ -81,7 +79,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import * as CustomKeyboard from 'react-native-yusha-customkeyboard'
+import * as CustomKeyboard from 'fego-rn-keyboard'
 
 export default class App extends Component<{}> {
   render() {
@@ -139,7 +137,7 @@ const styles = StyleSheet.create({
 - removeKeyBoardListener：移除键盘监听
 
 ### 示例运行：
-- git clone https://github.com/lyxia/react-native-yusha-customKeyboard.git
-- cd react-native-yusha-customKeyboard/RNDemo
+- git clone https://github.com/askday/react-native-yusha-customKeyboard.git
+- cd fego-rn-keyboard/RNDemo
 - yarn install
 - react-native run-ios/android

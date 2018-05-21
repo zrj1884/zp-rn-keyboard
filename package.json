@@ -1,6 +1,6 @@
 {
   "name": "fego-rn-keyboard",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "react native custom keyboard",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,8 @@
     "ios",
     "src",
     "index.js",
-    "package.json"
+    "package.json",
+    "fego-rn-keyboard.podspec"
   ],
   "author": "lyxia,wx",
   "license": "ISC",
