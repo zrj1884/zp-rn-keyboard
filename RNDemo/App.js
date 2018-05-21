@@ -5,25 +5,28 @@ import "./js/RegisterKeyboard";
 import * as CustomKeyboard from 'fego-rn-keyboard';
 
 export default class App extends Component {
-  componentDidMount() {
-    console.log('==============')
-    CustomKeyboard.addKeyBoardShowListener(this._monitKeyboard);
-    CustomKeyboard.addKeyBoardHideListener(this._hideKeyboard)
-    BackHandler.addEventListener('hardwareBackPress', this._handleBack);
-  }
-
-  componentWillUnmount() {
-    CustomKeyboard.removeKeyBoardListener(this._monitKeyboard);
-    CustomKeyboard.removeKeyBoardListener(this._hideKeyboard)
+  componentWillMount() {
+    if (this._showCustomKeyboardSub) {
+      CustomKeyboard.removeKeyBoardListener(this._showCustomKeyboardSub);
+    }
+    if (this._hideCustomKeyboardSub) {
+      CustomKeyboard.removeKeyBoardListener(this._hideCustomKeyboardSub);
+    }
     BackHandler.removeEventListener('hardwareBackPress', this._handleBack);
   }
 
-  _monitKeyboard = (tag) => {
+  componentDidMount() {
+    this._showCustomKeyboardSub = CustomKeyboard.addKeyBoardShowListener(this._showCustomKeyboard);
+    this._hideCustomKeyboardSub = CustomKeyboard.addKeyBoardHideListener(this._hideCustomKeyboard);
+    BackHandler.addEventListener('hardwareBackPress', this._handleBack);
+  }
+
+  _showCustomKeyboard = (tag) => {
     this._keyborardShow = true;
     this._focusTextTag = tag;
   }
 
-  _hideKeyboard = (tag) => {
+  _hideCustomKeyboard = (tag) => {
     this._keyborardShow = false;
     this._focusTextTag = tag;
   }
