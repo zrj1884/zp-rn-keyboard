@@ -1,6 +1,6 @@
 {
   "name": "fego-rn-keyboard",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react native custom keyboard",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "index.js",
     "package.json"
   ],
-  "author": "wx",
+  "author": "lyxia,wx",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "8.0.2",
