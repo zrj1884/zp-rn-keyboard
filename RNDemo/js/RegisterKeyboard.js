@@ -1,4 +1,4 @@
-import * as CustomKeyboard from 'react-native-yusha-customkeyboard'
+import * as CustomKeyboard from 'fego-rn-keyboard'
 import { Image, View } from 'react-native'
 import React, { Component } from 'react'
 

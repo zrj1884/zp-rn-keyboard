@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, BackHandler, View, TextInput } from 'react-native';
 
 import "./js/RegisterKeyboard";
-import * as CustomKeyboard from 'react-native-yusha-customkeyboard';
+import * as CustomKeyboard from 'fego-rn-keyboard';
 
 export default class App extends Component {
   componentDidMount() {

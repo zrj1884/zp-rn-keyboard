@@ -6,3 +6,6 @@ yarn-error.log
 RNDemo/ios/Pods
 Podfile.lock
 RNDemo/ios/RNDemo.xcworkspace
+ios/CustomKeyboard.xcodeproj/project.xcworkspace/xcshareddata
+ios/CustomKeyboard.xcodeproj/project.xcworkspace/xcuserdata
+ios/CustomKeyboard.xcodeproj/xcuserdata

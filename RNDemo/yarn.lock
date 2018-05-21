@@ -2121,6 +2121,11 @@ fbjs@^0.8.14, fbjs@^0.8.16, fbjs@^0.8.9:
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.9"
 
+"fego-rn-keyboard@file:../":
+  version "0.0.1"
+  dependencies:
+    react-native-svg "5.5.1"
+
 figures@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
@@ -4177,12 +4182,6 @@ react-native-svg@5.5.1:
   dependencies:
     color "^0.11.1"
     lodash "^4.16.6"
-
-react-native-yusha-customkeyboard@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/react-native-yusha-customkeyboard/-/react-native-yusha-customkeyboard-0.0.8.tgz#65c7fd49ef6da1933dbfcf055169b0a71cf2e8a5"
-  dependencies:
-    react-native-svg "5.5.1"
 
 react-native@0.55.3:
   version "0.55.3"

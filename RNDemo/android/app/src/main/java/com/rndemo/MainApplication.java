@@ -3,6 +3,7 @@ package com.rndemo;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.yusha.customKeyboard.RNCustomKeyboardPackage;
 import com.horcrux.svg.SvgPackage;
 import com.yusha.customKeyboard.RNCustomKeyboardPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,8 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new SvgPackage(),
-            new RNCustomKeyboardPackage()
+            new RNCustomKeyboardPackage(),
+            new SvgPackage()
       );
     }
 
