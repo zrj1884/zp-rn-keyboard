@@ -10,11 +10,11 @@ import {
   currentHeight,
 
   CustomTextInput,
-} from './customKeyboard'
+} from './src/customKeyboard'
 
-import NumberKeyBoardView from './views/NumberKeyBoard'
-import SafeKeyBoardView from './views/SafeKeyBoard'
-import AwareCusKeyBoardScrollView from './AwareCusKeyBoardScrollView'
+import NumberKeyBoardView from './src/views/NumberKeyBoard'
+import SafeKeyBoardView from './src/views/SafeKeyBoard'
+import AwareCusKeyBoardScrollView from './src/AwareCusKeyBoardScrollView'
 
 export {
   addKeyBoardHideListener,
