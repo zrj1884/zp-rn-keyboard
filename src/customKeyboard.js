@@ -97,17 +97,23 @@ class CustomKeyboardContainer extends Component {
 AppRegistry.registerComponent("CustomKeyboard", () => CustomKeyboardContainer);
 
 export class CustomTextInput extends Component {
+  static defaultProps = {
+    customKeyboardHeight: currentHeight,
+  }
+
   static propTypes = {
     ...TextInput.propTypes,
     customKeyboardType: PropTypes.string,
+    customKeyboardHeight: PropTypes.number,
   };
+
   constructor() {
     super(...arguments);
     this.state = { text: this.props.defaultValue || '' }
   }
   componentDidMount() {
     this.installTime = setTimeout(() => {
-      install(findNodeHandle(this.input), this.props.customKeyboardType);
+      install(findNodeHandle(this.input), this.props.customKeyboardType, this.props.customKeyboardHeight);
 
       if (Platform.OS === 'android') {
         this.showSub = addKeyBoardShowListener(this._showKeyboard);

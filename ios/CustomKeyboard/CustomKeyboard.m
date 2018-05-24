@@ -13,7 +13,7 @@
 }
 RCT_EXPORT_MODULE(CustomKeyboard)
 
-RCT_EXPORT_METHOD(install:(nonnull NSNumber *)reactTag withType:(nonnull NSString *)keyboardType)
+RCT_EXPORT_METHOD(install:(nonnull NSNumber *)reactTag withType:(nonnull NSString *)keyboardType withHeight:(nonnull NSNumber*)height)
 {
     UIView* inputView = [[RCTRootView alloc] initWithBridge:_bridge moduleName:@"CustomKeyboard" initialProperties:
                          @{
@@ -22,8 +22,9 @@ RCT_EXPORT_METHOD(install:(nonnull NSNumber *)reactTag withType:(nonnull NSStrin
                            }
                          ];
 
+    int keyboardHeight=[height intValue];
     inputView.autoresizingMask = UIViewAutoresizingNone;
-    inputView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 252 - 36);
+    inputView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, keyboardHeight);
 
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
