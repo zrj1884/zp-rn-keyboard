@@ -121,11 +121,15 @@ export default class KeyBoard extends Component {
   }
 
   render() {
-    const { KeyBoardView, showHeader } = this.props
+    const { KeyBoardView, showHeader, ...reset } = this.props
 
+    let keyBoardHeight = DeviceInfo.isIPhoneX_deprecated ? 286 : 252;
+    if (!showHeader) {
+      keyBoardHeight -= 36;
+    }
     return (
-      <View onLayout={this._onLayout} style={styles.container} ref="keyboard" pointerEvents="box-none">
-        <View style={styles.keyBoard} key="keyboard">
+      <View onLayout={this._onLayout} style={[styles.container]} ref="keyboard" pointerEvents="box-none">
+        <View style={[styles.keyBoard, { height: keyBoardHeight }]} key="keyboard">
           {
             (showHeader) && (
               <View style={styles.top}>
@@ -136,13 +140,13 @@ export default class KeyBoard extends Component {
                   <Text style={styles.topDesText}>{KeyBoardView.getKeyBoardName && KeyBoardView.getKeyBoardName()}</Text>
                 </View>
                 <TouchableOpacity onPress={this._clearFocus}>
-                  <Text style={styles.topCompleteText}>完成0</Text>
+                  <Text style={styles.topCompleteText}>完成</Text>
                 </TouchableOpacity>
               </View>
             )
           }
           <KeyBoardView
-            {...this.props}
+            {...reset}
             onKeyPress={this._handleKeyPress}
             onDelete={this._handleDelete}
             onClearAll={this._handlerClearAll}
