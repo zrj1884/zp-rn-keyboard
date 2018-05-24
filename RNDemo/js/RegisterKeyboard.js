@@ -39,8 +39,6 @@ CustomKeyboard.keyBoardAPI('numberKeyBoardWithDot')(class extends Component {
 CustomKeyboard.keyBoardAPI('safeKeyBoard')(CustomKeyboard.SafeKeyBoardView)
 //注册自定义视图键盘
 CustomKeyboard.keyBoardAPI('testKeyboard')(class extends Component {
-  static customKeyboardTop = true
-
   render() {
     return <View style={{ flex: 1, backgroundColor: 'red' }} />
   }

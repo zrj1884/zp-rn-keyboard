@@ -148,7 +148,7 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
   }
 
   render() {
-    const { children, otherProps } = this.props
+    const { children, ...otherProps } = this.props
     return (
       <ScrollView
         ref="scrollView"

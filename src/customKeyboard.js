@@ -174,7 +174,7 @@ export class CustomTextInput extends Component {
 }
 
 export function keyBoardAPI(keyBoardName) {
-  return function (KeyBoardView) {
+  return function (KeyBoardView, props) {
     class KeyBoard extends Component {
       render() {
         return (

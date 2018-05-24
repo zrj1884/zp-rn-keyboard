@@ -57,14 +57,6 @@ CustomKeyboard.keyBoardAPI('numberKeyBoardWithDot')(class extends Component{
 })
 //注册数字，字母，符号切换键盘
 CustomKeyboard.keyBoardAPI('safeKeyBoard')(CustomKeyboard.SafeKeyBoardView)
-//注册自定义视图键盘
-CustomKeyboard.keyBoardAPI('testKeyboard')(class extends Component{
-    static customKeyboardTop = true
-
-    render() {
-        return <View style={{flex:1, backgroundColor: 'red'}}/>
-    }
-})
 ```
 - 使用键盘：
 ```
@@ -122,7 +114,6 @@ const styles = StyleSheet.create({
 - 键盘组件：
     - getKeyBoardIcon: 静态方法，提供键盘标识的小图标。
     - getKeyBoardName：静态方法，提供图标右方显示的键盘名称。
-    - customKeyboardTop: 静态属性，是否使用自定义头部，如果为true，则getKeyBoardIcon和getKeyBoardName不会显示。
     - props：键盘组件会有以下属性
         - onKeyPress：当前位置输入字符this.props.onKeyPress(key)
         - onDelete: 当前位置删除一个字符this.props.onDelete()
