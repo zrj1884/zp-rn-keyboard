@@ -21,12 +21,12 @@ RCT_EXPORT_METHOD(install:(nonnull NSNumber *)reactTag withType:(nonnull NSStrin
                            @"type": keyboardType
                            }
                          ];
-    
+
     inputView.autoresizingMask = UIViewAutoresizingNone;
-    inputView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 252);
-    
+    inputView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 252 - 36);
+
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     view.inputView = inputView;
     [view reloadInputViews];
 }
@@ -34,20 +34,20 @@ RCT_EXPORT_METHOD(install:(nonnull NSNumber *)reactTag withType:(nonnull NSStrin
 RCT_EXPORT_METHOD(uninstall:(nonnull NSNumber *)reactTag)
 {
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     view.inputView = nil;
     [view reloadInputViews];
 }
 
 RCT_EXPORT_METHOD(insertText:(nonnull NSNumber *)reactTag withText:(NSString*)text) {
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     [view replaceRange:view.selectedTextRange withText:text];
 }
 
 RCT_EXPORT_METHOD(backSpace:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     UITextRange* range = view.selectedTextRange;
     if ([view comparePosition:range.start toPosition:range.end] == 0) {
         range = [view textRangeFromPosition:[view positionFromPosition:range.start offset:-1] toPosition:range.start];
@@ -57,7 +57,7 @@ RCT_EXPORT_METHOD(backSpace:(nonnull NSNumber *)reactTag) {
 
 RCT_EXPORT_METHOD(doDelete:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     UITextRange* range = view.selectedTextRange;
     if ([view comparePosition:range.start toPosition:range.end] == 0) {
         range = [view textRangeFromPosition:range.start toPosition:[view positionFromPosition: range.start offset: 1]];
@@ -67,33 +67,33 @@ RCT_EXPORT_METHOD(doDelete:(nonnull NSNumber *)reactTag) {
 
 RCT_EXPORT_METHOD(moveLeft:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     UITextRange* range = view.selectedTextRange;
     UITextPosition* position = range.start;
-    
+
     if ([view comparePosition:range.start toPosition:range.end] == 0) {
         position = [view positionFromPosition: position offset: -1];
     }
-    
+
     view.selectedTextRange = [view textRangeFromPosition: position toPosition:position];
 }
 
 RCT_EXPORT_METHOD(moveRight:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     UITextRange* range = view.selectedTextRange;
     UITextPosition* position = range.end;
-    
+
     if ([view comparePosition:range.start toPosition:range.end] == 0) {
         position = [view positionFromPosition: position offset: 1];
     }
-    
+
     view.selectedTextRange = [view textRangeFromPosition: position toPosition:position];
 }
 
 RCT_EXPORT_METHOD(switchSystemKeyboard:(nonnull NSNumber*) reactTag) {
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     UIView* inputView = view.inputView;
     view.inputView = nil;
     [view reloadInputViews];
@@ -102,7 +102,7 @@ RCT_EXPORT_METHOD(switchSystemKeyboard:(nonnull NSNumber*) reactTag) {
 
 RCT_EXPORT_METHOD(clearAll:(nonnull NSNumber *)reactTag){
     UITextField *view = (UITextField *)(((RCTBaseTextInputView*)[_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-    
+
     UITextRange* range = view.selectedTextRange;
     if(range.end > 0) {
         range = [view textRangeFromPosition:0 toPosition:range.end];
