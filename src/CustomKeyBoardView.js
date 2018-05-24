@@ -19,21 +19,33 @@ import { KeyTip } from './views'
 
 export default class KeyBoard extends Component {
   state: Object
+  showHeader: boolean
   backSpaceRequest: number
   insertTextRequest: number
   clearFocusRequest: number
   clearAllRequest: number
 
   static propTypes = {
+    showHeader: PropTypes.bool,
     insertText: PropTypes.func.isRequired,
     clearFocus: PropTypes.func.isRequired,
     clearAll: PropTypes.func.isRequired,
     KeyBoardView: PropTypes.any.isRequired,
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.showHeader !== prevState.showHeader) {
+      return ({
+        showHeader: nextProps.showHeader
+      });
+    }
+    return null;
+  }
+
   constructor() {
     super(...arguments)
     this.state = {
+      showHeader: this.props.showHeader,
       width: 0,
       showTip: { isShow: false, layout: { x: 0, y: 0, width: 0, height: 0 }, keyValue: "" }
     }
@@ -109,13 +121,13 @@ export default class KeyBoard extends Component {
   }
 
   render() {
-    const { KeyBoardView } = this.props
+    const { KeyBoardView, showHeader } = this.props
 
     return (
       <View onLayout={this._onLayout} style={styles.container} ref="keyboard" pointerEvents="box-none">
         <View style={styles.keyBoard} key="keyboard">
           {
-            !KeyBoardView.customKeyboardTop && (
+            (showHeader) && (
               <View style={styles.top}>
                 <View style={styles.topLeft}>
                   {
@@ -124,7 +136,7 @@ export default class KeyBoard extends Component {
                   <Text style={styles.topDesText}>{KeyBoardView.getKeyBoardName && KeyBoardView.getKeyBoardName()}</Text>
                 </View>
                 <TouchableOpacity onPress={this._clearFocus}>
-                  <Text style={styles.topCompleteText}>完成</Text>
+                  <Text style={styles.topCompleteText}>完成0</Text>
                 </TouchableOpacity>
               </View>
             )

@@ -174,7 +174,7 @@ export class CustomTextInput extends Component {
 }
 
 export function keyBoardAPI(keyBoardName) {
-  return function (KeyBoardView, props) {
+  return function (KeyBoardView, otherProps) {
     class KeyBoard extends Component {
       render() {
         return (
@@ -185,6 +185,7 @@ export function keyBoardAPI(keyBoardName) {
             backSpace={backSpace}
             KeyBoardView={KeyBoardView}
             {...this.props}
+            {...otherProps}
           />
         )
       }
