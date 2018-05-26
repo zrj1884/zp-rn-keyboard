@@ -1,45 +1,23 @@
-import * as CustomKeyboard from 'fego-rn-keyboard'
-import { Image, View } from 'react-native'
-import React, { Component } from 'react'
+import { keyBoardAPI, NumberKeyBoardView, SafeKeyBoardView } from 'fego-rn-keyboard';
 
-//注册没有小数点的数字键盘
-CustomKeyboard.keyBoardAPI('numberKeyBoard')(class extends Component {
-  static getKeyBoardIcon = () => {
-    return <Image source={require('./images/anquanbaohu.png')} />
-  }
+/**
+ *  注册数字键盘
+ */
+keyBoardAPI('numberKeyBoard')(NumberKeyBoardView, {
+  showHeader: true, keyboardType: 'number-pad', disableOtherText: true, disableDot: true,
+});
+keyBoardAPI('numberKeyBoardWithoutHeader')(NumberKeyBoardView, {
+  showHeader: false, keyboardType: 'number-pad', disableOtherText: true, disableDot: true,
+});
+keyBoardAPI('numberKeyBoardWithDot')(NumberKeyBoardView, {
+  showHeader: true, keyboardType: 'number-pad', disableOtherText: true, disableDot: false,
+});
+keyBoardAPI('numberKeyBoardWithDotWithoutHeader')(NumberKeyBoardView, {
+  showHeader: false, keyboardType: 'number-pad', disableOtherText: true, disableDot: false,
+});
 
-  static getKeyBoardName = () => {
-    return "安全键盘"
-  }
-
-  render() {
-    return (
-      <CustomKeyboard.NumberKeyBoardView
-        keyboardType={"number-pad"}
-        disableOtherText={true}
-        disableDot={true}
-        {...this.props}
-      />
-    )
-  }
-})
-//注册有小数点的数字键盘
-CustomKeyboard.keyBoardAPI('numberKeyBoardWithDot')(class extends Component {
-  render() {
-    return (
-      <CustomKeyboard.NumberKeyBoardView
-        keyboardType={"number-pad"}
-        disableOtherText={true}
-        {...this.props}
-      />
-    )
-  }
-})
-//注册数字，字母，符号切换键盘
-CustomKeyboard.keyBoardAPI('safeKeyBoard')(CustomKeyboard.SafeKeyBoardView)
-//注册自定义视图键盘
-CustomKeyboard.keyBoardAPI('testKeyboard')(class extends Component {
-  render() {
-    return <View style={{ flex: 1, backgroundColor: 'red' }} />
-  }
-})
+/**
+ * 注册数字，字母，符号切换键盘
+ */
+keyBoardAPI('safeKeyBoardWithHeader')(SafeKeyBoardView, { showHeader: true });
+keyBoardAPI('safeKeyBoardWithOutHeader')(SafeKeyBoardView, { showHeader: false });

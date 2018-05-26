@@ -56,12 +56,12 @@ export default class App extends Component {
           placeholder="numberKeyBoardWithDot"
         />
         <CustomKeyboard.CustomTextInput
-          customKeyboardType="safeKeyBoard"
-          placeholder="safeKeyBoard"
+          customKeyboardType="safeKeyBoardWithOutHeader"
+          placeholder="safeKeyBoardWithOutHeader"
         />
         <CustomKeyboard.CustomTextInput
-          customKeyboardType="testKeyboard"
-          placeholder="testKeyboard"
+          customKeyboardType="safeKeyBoardWithHeader"
+          placeholder="safeKeyBoardWithHeader"
         />
         <TextInput style={{ height: 40, width: 200 }} />
       </CustomKeyboard.AwareCusKeyBoardScrollView>
