@@ -171,10 +171,11 @@ export class CustomTextInput extends Component {
 
   render() {
     const { customKeyboardType, ...others } = this.props;
-    return <TextInput {...others}
+    return <TextInput
       ref={this.onRef}
       onChangeText={this._onChangeText}
       value={this.state.text}
+      {...others}
     />;
   }
 }
