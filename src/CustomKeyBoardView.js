@@ -12,10 +12,12 @@ import {
   StyleSheet,
   findNodeHandle,
   DeviceInfo,
+  Dimensions,
 } from 'react-native';
 
 //提示
 import { KeyTip } from './views'
+const { width } = Dimensions.get("window");
 
 export default class KeyBoard extends Component {
   state: Object
@@ -46,7 +48,7 @@ export default class KeyBoard extends Component {
     super(...arguments)
     this.state = {
       showHeader: this.props.showHeader,
-      width: 0,
+      width: width,
       showTip: { isShow: false, layout: { x: 0, y: 0, width: 0, height: 0 }, keyValue: "" }
     }
   }
@@ -129,7 +131,7 @@ export default class KeyBoard extends Component {
     }
     return (
       <View onLayout={this._onLayout} style={[styles.container]} ref="keyboard" pointerEvents="box-none">
-        <View style={[styles.keyBoard, { height: keyBoardHeight }]} key="keyboard">
+        <View style={[styles.keyBoard, { flex: 1, height: keyBoardHeight }]} key="keyboard">
           {
             (showHeader) && (
               <View style={styles.top}>
