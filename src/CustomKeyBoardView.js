@@ -131,7 +131,7 @@ export default class KeyBoard extends Component {
     }
     return (
       <View onLayout={this._onLayout} style={[styles.container]} ref="keyboard" pointerEvents="box-none">
-        <View style={[styles.keyBoard, { flex: 1, height: keyBoardHeight }]} key="keyboard">
+        <View style={[styles.keyBoard, { width, height: keyBoardHeight }]} key="keyboard">
           {
             (showHeader) && (
               <View style={styles.top}>
@@ -166,6 +166,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
     justifyContent: 'flex-end',
+    alignItems: 'flex-end',
   },
   keyBoard: {
     backgroundColor: '#f6f5f2',

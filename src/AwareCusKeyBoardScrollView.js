@@ -29,13 +29,13 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
   //监听自定义键盘
   showCustomKeyBoardSub: any
   hideCustomKeyboardSub: any
-
   //区分showSys->hideSys和showSys->showCus->hideSys之间的区别
   flag: number
+  topExtraHeight: number
 
   constructor() {
     super(...arguments)
-
+    this.topExtraHeight = this.props.topExtraHeight || 0
     this.flag = 0
     this.state = {
       showKeyBoard: false,
@@ -119,6 +119,7 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
 
   _updateScrollTo = () => {
     if (TextInput.State.currentlyFocusedField() == null) {
+      this.refs.scrollView.scrollTo({ y: 0 })
       return
     }
 
@@ -134,9 +135,11 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
           this._onError,
           (left, top, width, height) => {
             const windowHeight = Dimensions.get('window').height
-            const subHeight = windowHeight - CustomKeyboard.currentHeight
+            const subHeight = windowHeight - CustomKeyboard.currentHeight - this.topExtraHeight
             const currentHeight = top + height + y + 30 //上下padding高度
             if (subHeight < currentHeight) {
+              console.log(x + "|" + y + "|" + width + "|" + height)
+              console.log(windowHeight + "|" + subHeight + "|" + currentHeight);
               this.refs.scrollView.scrollTo({ y: currentHeight - subHeight })
             }
           }
@@ -153,6 +156,8 @@ export default class AwareCusKeyBoardScrollView extends PureComponent {
       <ScrollView
         ref="scrollView"
         key="scrollView"
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
         {...otherProps}
       >
