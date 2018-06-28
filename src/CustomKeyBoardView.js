@@ -54,17 +54,17 @@ export default class KeyBoard extends Component {
   }
 
   _handleDelete = () => {
-    this.backSpaceRequest && cancelAnimationFrame(this.backSpaceRequest)
-    this.backSpaceRequest = requestAnimationFrame(() => {
-      this.props.backSpace(this.props.tag);
-    })
+    // this.backSpaceRequest && cancelAnimationFrame(this.backSpaceRequest)
+    // this.backSpaceRequest = requestAnimationFrame(() => {
+    this.props.backSpace(this.props.tag);
+    // })
   };
 
   _handleKeyPress = (key) => {
-    this.insertTextRequest && cancelAnimationFrame(this.insertTextRequest)
-    this.insertTextRequest = requestAnimationFrame(() => {
-      this.props.insertText(this.props.tag, key);
-    })
+    // this.insertTextRequest && cancelAnimationFrame(this.insertTextRequest)
+    // this.insertTextRequest = requestAnimationFrame(() => {
+    this.props.insertText(this.props.tag, key);
+    // })
   }
 
   _clearFocus = () => {
