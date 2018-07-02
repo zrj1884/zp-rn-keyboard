@@ -30,7 +30,7 @@ RCT_EXPORT_METHOD(install
     inputView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, keyboardHeight);
 
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-//    view.keyboardAppearance = UIKeyboardAppearanceLight;
+    //    view.keyboardAppearance = UIKeyboardAppearanceLight;
     view.inputView = inputView;
     [view reloadInputViews];
 }
@@ -46,9 +46,15 @@ RCT_EXPORT_METHOD(uninstall
 RCT_EXPORT_METHOD(insertText
                   : (nonnull NSNumber *) reactTag withText
                   : (NSString *) text) {
-    UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
-
-    [view replaceRange:view.selectedTextRange withText:text];
+    RCTBaseTextInputView *rctbaseTextInputView = (RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag];
+    UITextField *view = (UITextField *) rctbaseTextInputView.backedTextInputView;
+    // NSLog(@"%@",rctbaseTextInputView.backedTextInputView.attributedText.string);
+    // NSLog(@"%@",rctbaseTextInputView.backedTextInputView.attributedText.string.length);
+    // NSLog(@"%@",rctbaseTextInputView.maxLength);
+    // NSLog(@"%d",(rctbaseTextInputView.backedTextInputView.attributedText.string.length+text.length) <= rctbaseTextInputView.maxLength);
+    if ((rctbaseTextInputView.backedTextInputView.attributedText.string.length+text.length) <= rctbaseTextInputView.maxLength.integerValue) {
+        [view replaceRange:view.selectedTextRange withText:text];
+    }
 }
 
 RCT_EXPORT_METHOD(backSpace

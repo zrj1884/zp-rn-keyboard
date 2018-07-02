@@ -9,7 +9,7 @@ export const BG_COLOR = '#bcc0c6';
 export default StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
-    backgroundColor: '#f4f4f4'
+    backgroundColor: '#a5a5a5'
   },
   main: {
     flex: 1,
@@ -31,9 +31,6 @@ export const keyStyle = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRightWidth: hairlineWidth,
-    borderBottomWidth: hairlineWidth,
-    borderColor: '#a5a5a5'
   },
   border: {
     borderColor: '#FFF'

@@ -3,7 +3,7 @@ import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types'
 
 import {
-  View, Text, Image, TouchableHighlight,
+  View, Text, Image, TouchableHighlight, StyleSheet,
 } from 'react-native';
 
 import styles, {
@@ -67,14 +67,6 @@ class Keyboard extends PureComponent {
     return null;
   }
 
-  _disableBorder() {
-    if (this.props.disableBorder !== true) {
-      return keyStyle.bd;
-    }
-
-    return keyStyle.border;
-  }
-
   _disableClearButtonBackground() {
     if (this.props.disableClearButtonBackground !== true) {
       return keyStyle.bg_d2d5dc;
@@ -92,14 +84,15 @@ class Keyboard extends PureComponent {
   }
 
   _renderKey(key, index) {
+    const marginTest = { margin: StyleSheet.hairlineWidth }
     return (
       <TouchableHighlight
         key={index}
         underlayColor={BG_COLOR}
-        style={keyStyle.wrapper}
+        style={[keyStyle.wrapper, marginTest]}
         onPress={this._onPress.bind(this, key.mainText)}
       >
-        <View style={[keyStyle.bd, this._disableBorder()]}>
+        <View style={keyStyle.bd}>
           <Text style={keyStyle.mainText}>{key.mainText}</Text>
           {this._renderOtherText(key)}
         </View>
@@ -132,17 +125,17 @@ class Keyboard extends PureComponent {
       return (
         <TouchableHighlight
           underlayColor="#ffffff"
-          style={[keyStyle.wrapper, keyStyle.bg_d2d5dc]}
+          style={[keyStyle.wrapper, keyStyle.bg_d2d5dc, { margin: StyleSheet.hairlineWidth }]}
           onPress={this._onPress.bind(this, dotText)}
         >
-          <View style={[keyStyle.bd, this._disableBorder()]}>{dotNode}</View>
+          <View style={keyStyle.bd}>{dotNode}</View>
         </TouchableHighlight>
       );
     }
 
     return (
       <TouchableHighlight
-        style={[keyStyle.wrapper, keyStyle.bg_d2d5dc]}
+        style={[keyStyle.wrapper, keyStyle.bg_d2d5dc, { margin: StyleSheet.hairlineWidth }]}
       >
         <View />
       </TouchableHighlight>
@@ -162,21 +155,21 @@ class Keyboard extends PureComponent {
 
             <TouchableHighlight
               underlayColor={BG_COLOR}
-              style={keyStyle.wrapper}
+              style={[keyStyle.wrapper, { margin: StyleSheet.hairlineWidth }]}
               onPress={this._onPress.bind(this, '0')}
             >
-              <View style={[keyStyle.bd, this._disableBorder()]}>
+              <View style={keyStyle.bd}>
                 <Text style={keyStyle.mainText}>0</Text>
               </View>
             </TouchableHighlight>
 
             <TouchableHighlight
               underlayColor={this._clearBtnUnderlayColor()}
-              style={[keyStyle.wrapper, this._disableClearButtonBackground()]}
+              style={[keyStyle.wrapper, this._disableClearButtonBackground(), { margin: StyleSheet.hairlineWidth }]}
               onPress={this._onPress.bind(this, 'del')}
               onLongPress={this._clearAll.bind(this)}
             >
-              <View style={[keyStyle.bd, this._disableBorder()]}>
+              <View style={keyStyle.bd}>
                 <Image source={require('./images/back.png')} />
               </View>
             </TouchableHighlight>
