@@ -57,10 +57,14 @@ public class RNCustomKeyboardModule extends ReactContextBaseJavaModule {
   Handler handle = new Handler(Looper.getMainLooper());
 
   private ReactEditText getEditById(int id) {
-    UIViewOperationQueue uii = this.getReactApplicationContext().getNativeModule(UIManagerModule.class)
-        .getUIImplementation().getUIViewOperationQueue();
-    Log.i("react-native", String.valueOf(id));
-    return (ReactEditText) uii.getNativeViewHierarchyManager().resolveView(id);
+    try{
+      UIViewOperationQueue uii = this.getReactApplicationContext().getNativeModule(UIManagerModule.class)
+              .getUIImplementation().getUIViewOperationQueue();
+      Log.i("react-native", String.valueOf(id));
+      return (ReactEditText) uii.getNativeViewHierarchyManager().resolveView(id);
+    }catch(Exception ex){
+      return null;
+    }
   }
 
   @ReactMethod
