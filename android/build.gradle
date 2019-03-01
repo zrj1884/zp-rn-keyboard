@@ -1,22 +1,14 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
-    }
-}
-
 apply plugin: 'com.android.library'
-
+def safeExtGet(prop, fallback) {
+    rootProject.hasProperty(prop) ? rootProject.getProperty(prop) : fallback
+}
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion safeExtGet("compileSdkVersion", 28)
+    buildToolsVersion safeExtGet("buildToolsVersion", "28.0.3")
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion safeExtGet("minSdkVersion", 16)
+        targetSdkVersion safeExtGet("targetSdkVersion", 27)
         versionCode 1
         versionName "1.0"
     }
@@ -30,5 +22,5 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
+    implementation 'com.facebook.react:react-native:+'
 }
