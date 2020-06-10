@@ -1,7 +1,7 @@
 # zp-rn-keyboard
 react native自定义键盘
 
-iOS，Android双平台使用，适配iPhoneX，博文地址：https://www.jianshu.com/p/6b6879323069
+iOS，Android双平台使用，适配iPhoneX
 
 ### RN版本：
 
@@ -130,4 +130,4 @@ const styles = StyleSheet.create({
 - git clone https://github.com/zrj1884/zp-rn-keyboard.git
 - cd zp-rn-keyboard/RNDemo
 - yarn install
-- react-native run-ios/android
+- yarn ios/android
