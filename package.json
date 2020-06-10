@@ -40,7 +40,6 @@
     "eslint-plugin-react": "7.8.2"
   },
   "peerDependencies": {
-    "react": "16.11.0",
-    "react-native": ">=0.60 <0.63"
+    "react-native": ">=0.60 <0.62"
   }
 }
