@@ -1,4 +1,4 @@
-import { keyBoardAPI, NumberKeyBoardView, SafeKeyBoardView } from 'fego-rn-keyboard';
+import { keyBoardAPI, NumberKeyBoardView, SafeKeyBoardView } from 'zp-rn-keyboard';
 
 /**
  *  注册数字键盘

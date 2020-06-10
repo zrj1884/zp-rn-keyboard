@@ -5,9 +5,9 @@ import SafeKeyBoardView from './SafeKeyBoard'
 import KeyTip from './KeyTip'
 
 export {
-  ABCKeyBoardView,
-  CharKeyBoardView,
-  NumberKeyBoardView,
-  SafeKeyBoardView,
-  KeyTip,
+    ABCKeyBoardView,
+    CharKeyBoardView,
+    NumberKeyBoardView,
+    SafeKeyBoardView,
+    KeyTip,
 }

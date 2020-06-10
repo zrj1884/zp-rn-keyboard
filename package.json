@@ -1,6 +1,6 @@
 {
-  "name": "fego-rn-keyboard",
-  "version": "0.2.0",
+  "name": "zp-rn-keyboard",
+  "version": "0.3.0",
   "description": "react native custom keyboard",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/askday/react-native-yusha-customKeyboard.git"
+    "url": "https://github.com/zrj1884/zp-rn-keyboard.git"
   },
   "keywords": [
     "react-component",
@@ -24,11 +24,12 @@
     "android",
     "ios",
     "src",
+    "index.d.ts",
     "index.js",
     "package.json",
-    "fego-rn-keyboard.podspec"
+    "zp-rn-keyboard.podspec"
   ],
-  "author": "lyxia,wx",
+  "author": "zrj1884",
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "9.0.0",
@@ -39,6 +40,7 @@
     "eslint-plugin-react": "7.8.2"
   },
   "peerDependencies": {
-    "react-native": ">=0.47 <=0.58"
+    "react": "16.11.0",
+    "react-native": ">=0.60 <0.63"
   }
 }

@@ -1130,7 +1130,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wx.fego.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wx.zp.keyboard;
 				PRODUCT_NAME = RNDemo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1158,7 +1158,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wx.fego.keyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wx.zp.keyboard;
 				PRODUCT_NAME = RNDemo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";

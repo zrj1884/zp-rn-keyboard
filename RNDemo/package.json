@@ -8,16 +8,17 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.6.3",
-    "react-native": "0.58.4",
-    "fego-rn-keyboard": "file:../"
+    "react": "16.9.0",
+    "react-native": "0.61.5",
+    "zp-rn-keyboard": "file:../"
   },
   "devDependencies": {
-    "@babel/core": "7.2.2",
-    "babel-jest": "24.1.0",
-    "metro-react-native-babel-preset": "0.45.0",
-    "jest": "24.1.0",
-    "react-test-renderer": "16.6.3"
+    "@babel/core": "^7.8.7",
+    "babel-jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "jest": "^25.1.0",
+    "react-test-renderer": "16.9.0",
+    "typescript": "^3.8.3"
   },
   "jest": {
     "preset": "react-native"

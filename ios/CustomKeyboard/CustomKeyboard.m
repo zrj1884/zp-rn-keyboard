@@ -1,7 +1,7 @@
 
 #import "CustomKeyboard.h"
 #import <React/RCTUIManager.h>
-#import <RCTBaseTextInputView.h>
+#import "RCTBaseTextInputView.h"
 
 @implementation CustomKeyboard
 
@@ -12,10 +12,9 @@
 }
 RCT_EXPORT_MODULE(CustomKeyboard)
 
-RCT_EXPORT_METHOD(install
-                  : (nonnull NSNumber *) reactTag withType
-                  : (nonnull NSString *) keyboardType withHeight
-                  : (nonnull NSNumber *) height) {
+RCT_EXPORT_METHOD(install:(nonnull NSNumber *)reactTag
+                  withType:(nonnull NSString *)keyboardType
+                  withHeight: (nonnull NSNumber *) height) {
     UIView *inputView = [[RCTRootView alloc] initWithBridge:_bridge
                                                  moduleName:@"CustomKeyboard"
                                           initialProperties:
@@ -35,30 +34,39 @@ RCT_EXPORT_METHOD(install
     [view reloadInputViews];
 }
 
-RCT_EXPORT_METHOD(uninstall
-                  : (nonnull NSNumber *) reactTag) {
+RCT_EXPORT_METHOD(uninstall:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
     view.inputView = nil;
     [view reloadInputViews];
 }
 
-RCT_EXPORT_METHOD(insertText
-                  : (nonnull NSNumber *) reactTag withText
-                  : (NSString *) text) {
+RCT_EXPORT_METHOD(insertText:(nonnull NSNumber *)reactTag withText:(NSString *)text) {
+    // NSLog(@"reactTag=%@, insertText=%@", reactTag, text);
     RCTBaseTextInputView *rctbaseTextInputView = (RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag];
+    if (!rctbaseTextInputView || ![rctbaseTextInputView isKindOfClass:RCTBaseTextInputView.class]) {
+        return;
+    }
     UITextField *view = (UITextField *) rctbaseTextInputView.backedTextInputView;
+    if (!view) {
+        return;
+    }
     // NSLog(@"%@",rctbaseTextInputView.backedTextInputView.attributedText.string);
     // NSLog(@"%@",rctbaseTextInputView.backedTextInputView.attributedText.string.length);
     // NSLog(@"%@",rctbaseTextInputView.maxLength);
     // NSLog(@"%d",(rctbaseTextInputView.backedTextInputView.attributedText.string.length+text.length) <= rctbaseTextInputView.maxLength);
-    if ((rctbaseTextInputView.backedTextInputView.attributedText.string.length+text.length) <= rctbaseTextInputView.maxLength.integerValue) {
+    if (rctbaseTextInputView.maxLength && rctbaseTextInputView.maxLength.integerValue > 0) {
+        if ((view.attributedText.string.length + text.length) <= rctbaseTextInputView.maxLength.integerValue) {
+            [view replaceRange:view.selectedTextRange withText:text];
+            // NSLog(@"inserted=%@", view.text);
+        }
+    } else {
         [view replaceRange:view.selectedTextRange withText:text];
+        // NSLog(@"inserted=%@", view.text);
     }
 }
 
-RCT_EXPORT_METHOD(backSpace
-                  : (nonnull NSNumber *) reactTag) {
+RCT_EXPORT_METHOD(backSpace:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
     UITextRange *range = view.selectedTextRange;
@@ -68,8 +76,7 @@ RCT_EXPORT_METHOD(backSpace
     [view replaceRange:range withText:@""];
 }
 
-RCT_EXPORT_METHOD(doDelete
-                  : (nonnull NSNumber *) reactTag) {
+RCT_EXPORT_METHOD(doDelete:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
     UITextRange *range = view.selectedTextRange;
@@ -79,8 +86,7 @@ RCT_EXPORT_METHOD(doDelete
     [view replaceRange:range withText:@""];
 }
 
-RCT_EXPORT_METHOD(moveLeft
-                  : (nonnull NSNumber *) reactTag) {
+RCT_EXPORT_METHOD(moveLeft:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
     UITextRange *range = view.selectedTextRange;
@@ -93,8 +99,7 @@ RCT_EXPORT_METHOD(moveLeft
     view.selectedTextRange = [view textRangeFromPosition:position toPosition:position];
 }
 
-RCT_EXPORT_METHOD(moveRight
-                  : (nonnull NSNumber *) reactTag) {
+RCT_EXPORT_METHOD(moveRight:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
     UITextRange *range = view.selectedTextRange;
@@ -107,8 +112,7 @@ RCT_EXPORT_METHOD(moveRight
     view.selectedTextRange = [view textRangeFromPosition:position toPosition:position];
 }
 
-RCT_EXPORT_METHOD(switchSystemKeyboard
-                  : (nonnull NSNumber *) reactTag) {
+RCT_EXPORT_METHOD(switchSystemKeyboard:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
     UIView *inputView = view.inputView;
@@ -117,8 +121,7 @@ RCT_EXPORT_METHOD(switchSystemKeyboard
     view.inputView = inputView;
 }
 
-RCT_EXPORT_METHOD(clearAll
-                  : (nonnull NSNumber *) reactTag) {
+RCT_EXPORT_METHOD(clearAll:(nonnull NSNumber *)reactTag) {
     UITextField *view = (UITextField *) (((RCTBaseTextInputView *) [_bridge.uiManager viewForReactTag:reactTag]).backedTextInputView);
 
     UITextRange *range = view.selectedTextRange;
